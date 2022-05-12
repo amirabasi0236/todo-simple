@@ -1,9 +1,10 @@
 import Template from "./components/layout/Template";
+import AddTodo from "./components/todos/AddTodo";
 
 const App = () => {
   return (
     <Template>
-      App
+      <AddTodo />
     </Template>
   )
 }
