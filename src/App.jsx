@@ -18,10 +18,16 @@ const App = () => {
     setTodos(newTodos);
   };
 
+  const toggleComplateTodo = (index) => {
+    const newTodos = [...todos];
+    newTodos[index].isComplate = !newTodos[index].isComplate;
+    setTodos(newTodos);
+  };
+  
   return (
     <Template>
       <AddTodo addTodoHandler={addTodoHandler} />
-      <Todos todos={todos} deleteTodo={deleteTodo} />
+      <Todos todos={todos} deleteTodo={deleteTodo} toggleComplateTodo={toggleComplateTodo}/>
     </Template>
   );
 };
