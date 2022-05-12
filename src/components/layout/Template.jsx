@@ -5,7 +5,7 @@ const Template = ({children}) => {
   return (
     <>
         <Header/>
-        <main className="py-3 px-5">{children}</main>
+        <main className="todo__container py-3 px-5">{children}</main>
         <Footer />
     </>
   )

@@ -1,3 +1,7 @@
+.todo__container{
+    width: 850px;
+    margin: 0 auto;
+}
 .complate{
     background: rgba(117, 238, 117, 0.404)!important;
 }
