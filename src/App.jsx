@@ -1,6 +1,10 @@
+import Template from "./components/layout/Template";
+
 const App = () => {
   return (
-    <h1>App OK</h1>
+    <Template>
+      App
+    </Template>
   )
 }
 
