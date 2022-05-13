@@ -1,19 +1,29 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import Card from "../layout/Card";
 
 const AddTodo = ({ addTodoHandler }) => {
+  const [error, setError] = useState(null);
   const todoName__Ref = useRef(null);
 
   const submitHandler = (e) => {
     e.preventDefault();
 
     const todoName = todoName__Ref.current.value;
-    addTodoHandler(todoName);
-    todoName__Ref.current.value = "";
+
+    if (todoName == "") {
+      setError("Todo Name Empty!");
+      setTimeout(() => {
+        setError(null);
+      }, 2000);
+    } else {
+      addTodoHandler(todoName);
+      todoName__Ref.current.value = "";
+    }
   };
 
   return (
     <Card>
+      {error && <div className="alert alert-danger">{error}</div>}
       <form className="row" onSubmit={submitHandler}>
         <div className="col">
           <input
