@@ -1,7 +1,7 @@
 import { useRef, useState } from "react";
 import Card from "../layout/Card";
 
-const AddTodo = ({ addTodoHandler }) => {
+const AddTodo = ({ addTodoHandler, todos }) => {
   const [error, setError] = useState(null);
   const todoName__Ref = useRef(null);
 
@@ -10,15 +10,34 @@ const AddTodo = ({ addTodoHandler }) => {
 
     const todoName = todoName__Ref.current.value;
 
-    if (todoName == "") {
-      setError("Todo Name Empty!");
-      setTimeout(() => {
-        setError(null);
-      }, 2000);
-    } else {
+    if (formValid(todoName)) {
       addTodoHandler(todoName);
       todoName__Ref.current.value = "";
     }
+  };
+
+  const formValid = (todoName) => {
+    const isDuplicate = todos.find(
+      (todo) => todo.name.trim() === todoName.trim(),
+    );
+
+    if (todoName == "") {
+      messageError("Todo Name Empty!");
+      return false;
+    } else if (isDuplicate) {
+      messageError("Please Add New Todo Exist Todo!");
+      return false;
+    }
+
+    return true;
+  };
+
+  const messageError = (error) => {
+    setError(error);
+
+    setTimeout(() => {
+      setError(null);
+    }, 2000);
   };
 
   return (

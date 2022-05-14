@@ -26,7 +26,7 @@ const App = () => {
   
   return (
     <Template>
-      <AddTodo addTodoHandler={addTodoHandler} />
+      <AddTodo addTodoHandler={addTodoHandler} todos={todos}/>
       <Todos todos={todos} deleteTodo={deleteTodo} toggleComplateTodo={toggleComplateTodo}/>
     </Template>
   );
